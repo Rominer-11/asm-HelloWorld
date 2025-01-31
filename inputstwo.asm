@@ -2,13 +2,13 @@
 ; say hello
 
 section .data
-	MOne db "Give me a one digit number: "
+	MOne db "Give me a number: "
 	MOne_L equ $ - MOne
 	MTwo db "That number plus two is... "
 	MTwo_L equ $ - MTwo
 
 section .bss
-	number_V resb 1
+	number_V resb 255
 
 section .text
 	global _start
@@ -29,9 +29,7 @@ _start:
 	mov ebx, 1
 	mov ecx, number_V
 	inc ecx
-	push ecx
-	mov ecx, esp
-	mov edx, 128
+	mov edx, 255
 	int 80h ; prints out num
 
 	mov eax, 1
